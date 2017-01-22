@@ -31,7 +31,7 @@ defmodule DesktopSystem.Configure do
 		# libxfce4ui-utils        - we don't need the xfce4 about screen
 		# thunar                  - we use the command line for file management
 		base_desktop_packages = ~w(
-			xserver-xorg
+			xorg
 			alsa-base
 			alsa-utils
 			adwaita-icon-theme
