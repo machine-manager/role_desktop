@@ -24,34 +24,41 @@ defmodule DesktopSystem.Configure do
 			:custom_packages_remote,
 			:google_chrome,
 		])
-		# We don't list xfce4 here because it installs some things we don't want:
+		# We list specific xfce4 packages here instead of "xfce4", which would
+		# install some packages we don't want:
 		# orage                   - we use a spreadsheet for a calendar
 		# xfce4-pulseaudio-plugin - we don't use pulseaudio
 		# xfce4-appfinder         - we use a popup terminal and whiskermenu instead
 		# libxfce4ui-utils        - we don't need the xfce4 about screen
 		# thunar                  - we use the command line for file management
-		base_desktop_packages = ~w(
-			xorg
-			alsa-base
-			alsa-utils
-			adwaita-icon-theme
-			dmz-cursor-theme
-			roxterm
-			xterm
-			xfwm4
-			xfconf
-			xfdesktop4
-			xfce4-battery-plugin
-			xfce4-mixer
-			xfce4-notifyd
-			xfce4-panel
-			xfce4-power-manager
-			xfce4-screenshooter
-			xfce4-session
-			xfce4-settings
-			xfce4-volumed
-			xfce4-whiskermenu-plugin
-		)
+		#
+		# We install xfce4-mixer even though it brings in streamer0.10 packages
+		# because it includes the volume control for the panel, and because
+		# alsamixer and alsamixergui are bad in different ways (alsamixer is
+		# white-on-black; alsamixergui doesn't scale on hidpi).
+		base_desktop_packages = [
+			"xorg",
+			"alsa-base",
+			"alsa-utils",
+			"gnome-themes-standard",   # includes the adwaita engine
+			"adwaita-icon-theme",
+			"dmz-cursor-theme",
+			"roxterm",
+			"xterm",                   # backup terminal in case roxterm is broken
+			"xfwm4",
+			"xfconf",
+			"xfdesktop4",
+			"xfce4-battery-plugin",
+			"xfce4-mixer",
+			"xfce4-notifyd",
+			"xfce4-panel",
+			"xfce4-power-manager",
+			"xfce4-screenshooter",
+			"xfce4-session",
+			"xfce4-settings",
+			"xfce4-volumed",
+			"xfce4-whiskermenu-plugin",
+		]
 		network_manager_packages = ~w(
 			network-manager
 			network-manager-gnome
