@@ -73,6 +73,7 @@ defmodule DesktopSystem.Configure do
 			git-man
 			git-remote-hg
 			git-svn
+			patch
 			manpages
 			colordiff
 			devscripts
