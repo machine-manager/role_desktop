@@ -25,15 +25,34 @@ defmodule DesktopSystem.Configure do
 			:google_chrome,
 		])
 		xfce4_packages = ~w(
-			xfce4-battery-plugin xfce4-mixer xfce4-notifyd xfce4-panel xfce4-power-manager
-			xfce4-screenshooter xfce4-session xfce4-settings xfce4-volumed xfce4-whiskermenu-plugin
+			xfce4-battery-plugin
+			xfce4-mixer
+			xfce4-notifyd
+			xfce4-panel
+			xfce4-power-manager
+			xfce4-screenshooter
+			xfce4-session
+			xfce4-settings
+			xfce4-volumed
+			xfce4-whiskermenu-plugin
 		)
 		general_font_packages = ~w(
-			fonts-windows fonts-macos fonts-roboto fonts-pragmatapro-mono
-			fonts-san-francisco-display fonts-source-sans-pro
+			fonts-windows
+			fonts-macos
+			fonts-roboto
+			fonts-pragmatapro-mono
+			fonts-noto-hinted
+			fonts-noto-cjk
+			fonts-san-francisco-display
+			fonts-source-sans-pro
 		)
 		development_packages = ~w(
-			manpages colordiff git git-man git-remote-hg git-svn
+			manpages
+			colordiff
+			git
+			git-man
+			git-remote-hg
+			git-svn
 		)
 		more_packages = ~w(
 			google-chrome-stable
