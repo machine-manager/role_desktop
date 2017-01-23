@@ -32,10 +32,13 @@ defmodule DesktopSystem.Configure do
 		# libxfce4ui-utils        - we don't need the xfce4 about screen
 		# thunar                  - we use the command line for file management
 		#
-		# We install xfce4-mixer even though it brings in streamer0.10 packages
-		# because it includes the volume control for the panel, and because
-		# alsamixer and alsamixergui are bad in different ways (alsamixer is
-		# white-on-black; alsamixergui doesn't scale on hidpi).
+		# We don't install xfce4-indicator-plugin because it brings in upstart
+		# and mountall, and apparently we have no need for it because xfce4-panel
+		# includes built-in support for the notification area via
+		# /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libsystray.so
+		#
+		# We don't install xfce4-volumed because it's no longer maintained (and
+		# it doesn't really work).
 		base_desktop_packages = [
 			"xorg",
 			"alsa-base",
@@ -49,14 +52,12 @@ defmodule DesktopSystem.Configure do
 			"xfconf",
 			"xfdesktop4",
 			"xfce4-battery-plugin",
-			"xfce4-mixer",
 			"xfce4-notifyd",
 			"xfce4-panel",
 			"xfce4-power-manager",
 			"xfce4-screenshooter",
 			"xfce4-session",
 			"xfce4-settings",
-			"xfce4-volumed",
 			"xfce4-whiskermenu-plugin",
 		]
 		network_manager_packages = ~w(
