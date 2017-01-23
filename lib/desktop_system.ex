@@ -42,7 +42,7 @@ defmodule DesktopSystem.Configure do
 		base_desktop_packages = [
 			"xorg",
 			"alsa-base",
-			"alsa-utils",
+			"alsa-utils",              # alsamixer, amixer
 			"gnome-themes-standard",   # includes the adwaita engine
 			"adwaita-icon-theme",
 			"dmz-cursor-theme",
