@@ -47,7 +47,7 @@ defmodule DesktopSystem.Configure do
 			"adwaita-icon-theme",
 			"dmz-cursor-theme",
 			"roxterm",
-			"xterm",                   # backup terminal in case roxterm is broken
+			"xterm",                   # backup terminal in case roxterm breaks
 			"xfwm4",
 			"xfconf",
 			"xfdesktop4",
