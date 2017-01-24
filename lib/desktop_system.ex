@@ -1,4 +1,4 @@
-alias Converge.Util
+alias Converge.{Util, All, FilePresent, DirectoryPresent}
 
 defmodule DesktopSystem.Configure do
 	@moduledoc """
@@ -11,8 +11,17 @@ defmodule DesktopSystem.Configure do
 	require Util
 	Util.declare_external_resources("files")
 
-	defmacro content(filename) do
-		File.read!(filename)
+	defmacrop conf_dir(p) do
+		quote do
+			%DirectoryPresent{path: unquote(p), mode: 0o755}
+		end
+	end
+
+	defmacrop conf_file(p) do
+		data = File.read!("files/" <> p)
+		quote do
+			%FilePresent{path: unquote(p), content: unquote(data), mode: 0o644}
+		end
 	end
 
 	def main(_args) do
@@ -98,9 +107,33 @@ defmodule DesktopSystem.Configure do
 		extra_packages = \
 			base_desktop_packages ++ network_manager_packages ++ general_font_packages ++ \
 			development_packages ++ more_packages
+		extra_configuration = %All{units: [
+			conf_dir("/etc/skel/.config"),
+			conf_dir("/etc/skel/.config/xfce4"),
+			conf_dir("/etc/skel/.config/xfce4/xfconf"),
+			conf_dir("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml"),
+			conf_file("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml"),
+			conf_file("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml"),
+			conf_file("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"),
+			conf_file("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml"),
+			conf_file("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml"),
+			conf_dir("/etc/skel/.config/xfce4/panel"),
+			conf_file("/etc/skel/.config/xfce4/panel/whiskermenu-7.rc"),
+			conf_dir("/etc/skel/.config/roxterm.sourceforge.net"),
+			conf_dir("/etc/skel/.config/roxterm.sourceforge.net/Colours"),
+			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Colours/Tango"),
+			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Colours/Default"),
+			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Colours/GTK"),
+			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Global"),
+			conf_dir("/etc/skel/.config/roxterm.sourceforge.net/Shortcuts"),
+			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Shortcuts/Default"),
+			conf_dir("/etc/skel/.config/roxterm.sourceforge.net/Profiles"),
+			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Profiles/Default"),
+		]}
 		BaseSystem.Configure.configure(
-			repositories:   repositories,
-			extra_packages: extra_packages
+			repositories:        repositories,
+			extra_packages:      extra_packages,
+			extra_configuration: extra_configuration,
 		)
 		# TODO: PackagePurged pulseaudio
 		# TODO: PackagePurged rtkit
