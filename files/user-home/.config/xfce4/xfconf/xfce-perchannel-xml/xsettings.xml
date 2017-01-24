@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xsettings" version="1.0">
+  <property name="Net" type="empty">
+    <property name="ThemeName" type="string" value="Adwaita"/>
+    <property name="IconThemeName" type="string" value="Adwaita"/>
+    <property name="DoubleClickTime" type="empty"/>
+    <property name="DoubleClickDistance" type="empty"/>
+    <property name="DndDragThreshold" type="empty"/>
+    <property name="CursorBlink" type="empty"/>
+    <property name="CursorBlinkTime" type="int" value="1000"/>
+    <property name="SoundThemeName" type="empty"/>
+    <property name="EnableEventSounds" type="empty"/>
+    <property name="EnableInputFeedbackSounds" type="empty"/>
+  </property>
+  <property name="Xft" type="empty">
+    <property name="DPI" type="int" value="165"/>
+    <property name="Antialias" type="int" value="1"/>
+    <property name="Hinting" type="empty"/>
+    <property name="HintStyle" type="string" value="hintslight"/>
+    <property name="RGBA" type="string" value="rgb"/>
+  </property>
+  <property name="Gtk" type="empty">
+    <property name="CanChangeAccels" type="empty"/>
+    <property name="ColorPalette" type="empty"/>
+    <property name="FontName" type="string" value="San Francisco Display 11"/>
+    <property name="IconSizes" type="string" value="panel-menu=32,32:panel=32,32:panel-actions-menu=32,32:panel-launcher-menu=32,32:panel-launcher-tooltip=32,32:panel-tasklist-menu=32,32:panel-applications-menu=32,32:panel-directory-menu=32,32:panel-window-menu=32,32:gtk-menu=32,32:gtk-dialog=32,32:gtk-button=32,32:gtk-dnd=32,32:gtk-large-toolbar=32,32:gtk-small-toolbar=32,32"/>
+    <property name="KeyThemeName" type="empty"/>
+    <property name="ToolbarStyle" type="empty"/>
+    <property name="ToolbarIconSize" type="empty"/>
+    <property name="MenuImages" type="empty"/>
+    <property name="ButtonImages" type="empty"/>
+    <property name="MenuBarAccel" type="empty"/>
+    <property name="CursorThemeName" type="string" value="DMZ-White"/>
+    <property name="CursorThemeSize" type="int" value="48"/>
+    <property name="DecorationLayout" type="empty"/>
+  </property>
+  <property name="Xfce" type="empty">
+    <property name="LastCustomDPI" type="int" value="165"/>
+  </property>
+</channel>
