@@ -33,6 +33,8 @@ defmodule DesktopSystem.Configure do
 			:custom_packages_remote,
 			:google_chrome,
 		])
+		network_manager = Keyword.get(opts, :network_manager, false)
+
 		# We list specific xfce4 packages here instead of "xfce4", which would
 		# install some packages we don't want:
 		# orage                   - we use a spreadsheet for a calendar
@@ -71,39 +73,42 @@ defmodule DesktopSystem.Configure do
 			"xfce4-settings",
 			"xfce4-whiskermenu-plugin",
 		]
-		network_manager_packages = ~w(
-			network-manager
-			network-manager-gnome
-			network-manager-openvpn
-			network-manager-openvpn-gnome
-		)
-		general_font_packages = ~w(
-			fonts-windows
-			fonts-macos
-			fonts-roboto
-			fonts-pragmatapro-mono
-			fonts-noto-hinted
-			fonts-noto-cjk
-			fonts-san-francisco-display
-			fonts-source-sans-pro
-		)
-		development_packages = ~w(
-			git
-			git-man
-			git-remote-hg
-			git-svn
-			patch
-			manpages
-			colordiff
-			devscripts
-			wdiff
-			unzip
-			zip
-			p7zip-full
-		)
-		more_packages = ~w(
-			google-chrome-stable
-		)
+		network_manager_packages = case network_manager do
+			true  -> [
+				"network-manager",
+				"network-manager-gnome",
+				"network-manager-openvpn",
+				"network-manager-openvpn-gnome",
+			]
+			false -> []
+		end
+		general_font_packages = [
+			"fonts-windows",
+			"fonts-macos",
+			"fonts-roboto",
+			"fonts-pragmatapro-mono",
+			"fonts-noto-hinted",
+			"fonts-noto-cjk",
+			"fonts-san-francisco-display",
+			"fonts-source-sans-pro",
+		]
+		development_packages = [
+			"git",
+			"git-man",
+			"git-remote-hg",
+			"git-svn",
+			"patch",
+			"manpages",
+			"colordiff",
+			"devscripts",
+			"wdiff",
+			"unzip",
+			"zip",
+			"p7zip-full",
+		]
+		more_packages = [
+			"google-chrome-stable",
+		]
 		extra_packages = \
 			base_desktop_packages ++ network_manager_packages ++ general_font_packages ++ \
 			development_packages ++ more_packages
