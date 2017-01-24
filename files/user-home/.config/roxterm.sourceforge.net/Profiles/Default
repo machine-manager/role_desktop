@@ -1,0 +1,15 @@
+[roxterm profile]
+font=PragmataPro Mono 10.5
+width=180
+height=30
+show_add_tab_btn=0
+new_tabs_adjacent=1
+wrap_switch_tab=1
+show_tab_num=0
+show_tab_status=1
+colour_scheme=Tango
+limit_scrollback=1
+scrollback_lines=10000
+tab_close_btn=1
+browser=google-chrome
+cursor_blink_mode=0
