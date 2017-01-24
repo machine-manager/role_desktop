@@ -44,8 +44,9 @@ defmodule DesktopSystem.Configure do
 			"alsa-base",
 			"alsa-utils",              # alsamixer, amixer
 			"gnome-themes-standard",   # includes the adwaita engine
-			"adwaita-icon-theme",
-			"dmz-cursor-theme",
+			"adwaita-icon-theme",      # the icon theme we use
+			"gnome-icon-theme",        # necessary to avoid broken icons when using adwaita icon theme in xfce4
+			"dmz-cursor-theme",        # the cursor theme we use
 			"roxterm",
 			"xterm",                   # backup terminal in case roxterm breaks
 			"xfwm4",
