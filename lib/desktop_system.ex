@@ -136,9 +136,13 @@ defmodule DesktopSystem.Configure do
 			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Profiles/Default"),
 		]}
 		BaseSystem.Configure.configure(
-			repositories:        repositories,
-			extra_packages:      extra_packages,
-			extra_configuration: extra_configuration,
+			repositories:             repositories,
+			extra_packages:           extra_packages,
+			extra_configuration:      extra_configuration,
+			extra_undesired_packages: [
+				# We use our own fonts-windows instead
+				"ttf-mscorefonts-installer"
+			],
 		)
 		# TODO: PackagePurged pulseaudio
 		# TODO: PackagePurged rtkit
