@@ -23,7 +23,7 @@
   <property name="Gtk" type="empty">
     <property name="CanChangeAccels" type="empty"/>
     <property name="ColorPalette" type="empty"/>
-    <property name="FontName" type="string" value="San Francisco Display 11"/>
+    <property name="FontName" type="string" value="SF Compact Display 11"/>
     <property name="IconSizes" type="string" value="panel-menu=32,32:panel=32,32:panel-actions-menu=32,32:panel-launcher-menu=32,32:panel-launcher-tooltip=32,32:panel-tasklist-menu=32,32:panel-applications-menu=32,32:panel-directory-menu=32,32:panel-window-menu=32,32:gtk-menu=32,32:gtk-dialog=32,32:gtk-button=32,32:gtk-dnd=32,32:gtk-large-toolbar=32,32:gtk-small-toolbar=32,32"/>
     <property name="KeyThemeName" type="empty"/>
     <property name="ToolbarStyle" type="empty"/>

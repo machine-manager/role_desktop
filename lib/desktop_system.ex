@@ -89,7 +89,7 @@ defmodule DesktopSystem.Configure do
 			"fonts-pragmatapro-mono",
 			"fonts-noto-hinted",
 			"fonts-noto-cjk",
-			"fonts-san-francisco-display",
+			"fonts-san-francisco",
 			"fonts-source-sans-pro",
 		]
 		development_packages = [
