@@ -114,6 +114,9 @@ defmodule DesktopSystem.Configure do
 			development_packages ++ more_packages
 		extra_configuration = %All{units: [
 			conf_dir("/etc/skel/.config"),
+
+			conf_file("/etc/skel/.config/Trolltech.conf"),
+
 			conf_dir("/etc/skel/.config/xfce4"),
 			conf_dir("/etc/skel/.config/xfce4/xfconf"),
 			conf_dir("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml"),
@@ -124,6 +127,7 @@ defmodule DesktopSystem.Configure do
 			conf_file("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml"),
 			conf_dir("/etc/skel/.config/xfce4/panel"),
 			conf_file("/etc/skel/.config/xfce4/panel/whiskermenu-7.rc"),
+
 			conf_dir("/etc/skel/.config/roxterm.sourceforge.net"),
 			conf_dir("/etc/skel/.config/roxterm.sourceforge.net/Colours"),
 			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Colours/Tango"),
