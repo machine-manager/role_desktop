@@ -145,10 +145,13 @@ defmodule DesktopSystem.Configure do
 			extra_configuration:      extra_configuration,
 			extra_undesired_packages: [
 				# We use our own fonts-windows instead
-				"ttf-mscorefonts-installer"
+				"ttf-mscorefonts-installer",
+				# We use ALSA instead
+				"pulseaudio",
+				# We just allow desktop users to nice down to -11
+				# in /etc/security/limits.conf (TODO)
+				"rtkit",
 			],
 		)
-		# TODO: PackagePurged pulseaudio
-		# TODO: PackagePurged rtkit
 	end
 end
