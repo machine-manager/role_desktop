@@ -56,8 +56,7 @@ defmodule DesktopSystem.Configure do
 			"alsa-utils",              # alsamixer, amixer
 			"gnome-themes-standard",   # includes the adwaita engine
 			"gtk2-engines-pixbuf",     # necessary for the adwaita theme to render correctly
-			"adwaita-icon-theme",      # the icon theme we use
-			"gnome-icon-theme",        # necessary to avoid broken icons when using adwaita icon theme in xfce4
+			"adwaita-icon-theme-full", # the icon theme we use
 			"dmz-cursor-theme",        # the cursor theme we use
 			"roxterm",
 			"xterm",                   # backup terminal in case roxterm breaks
