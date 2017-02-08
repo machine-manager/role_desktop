@@ -104,6 +104,7 @@ defmodule DesktopSystem.Configure do
 			"unzip",
 			"zip",
 			"p7zip-full",
+			"p7zip-rar",
 		]
 		more_packages = [
 			"google-chrome-stable",
