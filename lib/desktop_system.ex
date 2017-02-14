@@ -1,4 +1,4 @@
-alias Converge.{Util, All, FilePresent, DirectoryPresent}
+alias Converge.{Util, All}
 
 defmodule DesktopSystem.Configure do
 	@moduledoc """
@@ -9,20 +9,8 @@ defmodule DesktopSystem.Configure do
 	erlang-base-hipe erlang-crypto curl
 	"""
 	require Util
+	import Util, only: [conf_dir: 1, conf_file: 1]
 	Util.declare_external_resources("files")
-
-	defmacrop conf_dir(p) do
-		quote do
-			%DirectoryPresent{path: unquote(p), mode: 0o755}
-		end
-	end
-
-	defmacrop conf_file(p) do
-		data = File.read!("files/" <> p)
-		quote do
-			%FilePresent{path: unquote(p), content: unquote(data), mode: 0o644}
-		end
-	end
 
 	def main(_args) do
 		configure()
