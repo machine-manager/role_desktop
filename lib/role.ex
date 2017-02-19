@@ -110,7 +110,7 @@ defmodule RoleDesktop do
 			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Profiles/Default"),
 		]}
 		%{
-			implied_roles:      ["google_chrome_repo", "custom_packages"],
+			implied_roles:      [RoleGoogleChromeRepo, RoleCustomPackages],
 			desired_packages:   desired_packages,
 			undesired_packages: undesired_packages,
 			post_install_unit:  post_install_unit,
