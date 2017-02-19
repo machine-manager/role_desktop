@@ -1,27 +1,12 @@
 alias Converge.{Util, All}
 
-defmodule DesktopSystem.Configure do
-	@moduledoc """
-	Converts a `debootstrap --variant=minbase` install of Ubuntu LTS into a
-	useful Ubuntu desktop.
-
-	Requires that these packages are already installed:
-	erlang-base-hipe erlang-crypto curl
-	"""
+defmodule RoleDesktop do
 	require Util
 	import Util, only: [conf_dir: 1, conf_file: 1]
 	Util.declare_external_resources("files")
 
-	def main(_args) do
-		configure()
-	end
-
-	def configure(opts \\ []) do
-		repositories = Keyword.get(opts, :repositories) || MapSet.new([
-			:custom_packages_remote,
-			:google_chrome,
-		])
-		network_manager = Keyword.get(opts, :network_manager, false)
+	def role(_tags \\ []) do
+		# TODO: child roles: wine, virtualbox_host, google_chrome_repo, custom_packages
 
 		# We list specific xfce4 packages here instead of "xfce4", which would
 		# install some packages we don't want:
@@ -60,15 +45,6 @@ defmodule DesktopSystem.Configure do
 			"xfce4-settings",
 			"xfce4-whiskermenu-plugin",
 		]
-		network_manager_packages = case network_manager do
-			true  -> [
-				"network-manager",
-				"network-manager-gnome",
-				"network-manager-openvpn",
-				"network-manager-openvpn-gnome",
-			]
-			false -> []
-		end
 		general_font_packages = [
 			"fonts-windows",
 			"fonts-macos",
@@ -97,10 +73,18 @@ defmodule DesktopSystem.Configure do
 		more_packages = [
 			"google-chrome-stable",
 		]
-		extra_packages = \
-			base_desktop_packages ++ network_manager_packages ++ general_font_packages ++ \
-			development_packages ++ more_packages
-		extra_configuration = %All{units: [
+		desired_packages = \
+			base_desktop_packages ++ general_font_packages ++ development_packages ++ more_packages
+		undesired_packages = [
+			# We use our own fonts-windows instead
+			"ttf-mscorefonts-installer",
+			# We use ALSA instead
+			"pulseaudio",
+			# We just allow desktop users to nice down to -11
+			# in /etc/security/limits.conf (TODO)
+			"rtkit",
+		]
+		post_install_unit = %All{units: [
 			conf_dir("/etc/skel/.config"),
 
 			conf_file("/etc/skel/.config/Trolltech.conf"),
@@ -127,19 +111,10 @@ defmodule DesktopSystem.Configure do
 			conf_dir("/etc/skel/.config/roxterm.sourceforge.net/Profiles"),
 			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Profiles/Default"),
 		]}
-		BaseSystem.Configure.configure(
-			repositories:             repositories,
-			extra_packages:           extra_packages,
-			extra_configuration:      extra_configuration,
-			extra_undesired_packages: [
-				# We use our own fonts-windows instead
-				"ttf-mscorefonts-installer",
-				# We use ALSA instead
-				"pulseaudio",
-				# We just allow desktop users to nice down to -11
-				# in /etc/security/limits.conf (TODO)
-				"rtkit",
-			],
-		)
+		%{
+			desired_packages:   desired_packages,
+			undesired_packages: undesired_packages,
+			post_install_unit:  post_install_unit,
+		}
 	end
 end
