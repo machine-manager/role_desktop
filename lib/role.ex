@@ -6,8 +6,6 @@ defmodule RoleDesktop do
 	Util.declare_external_resources("files")
 
 	def role(_tags \\ []) do
-		# TODO: child roles: wine, virtualbox_host, google_chrome_repo, custom_packages
-
 		# We list specific xfce4 packages here instead of "xfce4", which would
 		# install some packages we don't want:
 		# orage                   - we use a spreadsheet for a calendar
@@ -112,6 +110,7 @@ defmodule RoleDesktop do
 			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Profiles/Default"),
 		]}
 		%{
+			implied_roles:      ["google_chrome_repo", "custom_packages"],
 			desired_packages:   desired_packages,
 			undesired_packages: undesired_packages,
 			post_install_unit:  post_install_unit,
