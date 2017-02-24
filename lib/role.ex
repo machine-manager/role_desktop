@@ -31,6 +31,7 @@ defmodule RoleDesktop do
 			"dmz-cursor-theme",        # the cursor theme we use
 			"roxterm",
 			"xterm",                   # backup terminal in case roxterm breaks
+			"xclip",                   # for manipulating clipboard over ssh
 			"xfwm4",
 			"xfconf",
 			"xfdesktop4",
