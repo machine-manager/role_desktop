@@ -82,6 +82,10 @@ defmodule RoleDesktop do
 			# We just allow desktop users to nice down to -11
 			# in /etc/security/limits.conf (TODO)
 			"rtkit",
+			# Annoying program that pops up a little window asking for a password
+			# (and putting the keyboard into secure mode!) when you actually
+			# wanted the ssh connection to fail.
+			"ssh-askpass",
 		]
 		post_install_unit = %All{units: [
 			conf_dir("/etc/skel/.config"),
