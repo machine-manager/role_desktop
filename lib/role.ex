@@ -86,6 +86,9 @@ defmodule RoleDesktop do
 			# (and putting the keyboard into secure mode!) when you actually
 			# wanted the ssh connection to fail.
 			"ssh-askpass",
+			# xserver-xorg has a Depends on `xserver-xorg-input-all | xorg-driver-input`
+			# but we don't need support for all input devices.
+			"xserver-xorg-input-all",
 		]
 		post_install_unit = %All{units: [
 			conf_dir("/etc/skel/.config"),
