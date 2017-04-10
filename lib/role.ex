@@ -71,6 +71,8 @@ defmodule RoleDesktop do
 		]
 		more_packages = [
 			"google-chrome-stable",
+			# For running AppImages, which apparently require FUSE
+			"fuse",
 		]
 		desired_packages = \
 			base_desktop_packages ++ general_font_packages ++ development_packages ++ more_packages
