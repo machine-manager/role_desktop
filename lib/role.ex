@@ -124,6 +124,14 @@ defmodule RoleDesktop do
 			desired_packages:   desired_packages,
 			undesired_packages: undesired_packages,
 			post_install_unit:  post_install_unit,
+			ferm_output_chain:
+				"""
+				# Avahi (?) tries to talk mDNS on all interfaces; we don't want to log it
+				daddr 224.0.0.251 REJECT;
+
+				# Chrome tries to talk UPnP on all interfaces (probably for Chromecast); we don't want to log it
+				daddr 239.255.255.250 proto udp dport 1900 REJECT;
+				""",
 		}
 	end
 end
