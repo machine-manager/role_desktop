@@ -93,6 +93,8 @@ defmodule RoleDesktop do
 			"xserver-xorg-input-all",
 		]
 		post_install_unit = %All{units: [
+			conf_file("/etc/skel/.xinitrc"),
+
 			conf_dir("/etc/skel/.config"),
 
 			conf_file("/etc/skel/.config/Trolltech.conf"),
