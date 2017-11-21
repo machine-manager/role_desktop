@@ -29,8 +29,7 @@ defmodule RoleDesktop do
 			"gtk2-engines-pixbuf",     # necessary for the adwaita theme to render correctly
 			icon_theme_package(release),
 			"dmz-cursor-theme",        # the cursor theme we use
-			"roxterm",
-			"xterm",                   # backup terminal in case roxterm breaks
+			"xterm",                   # backup terminal emulator in case the primary one breaks
 			"xclip",                   # for manipulating clipboard over ssh
 			"xfwm4",
 			"xfconf",
@@ -45,6 +44,9 @@ defmodule RoleDesktop do
 			"xfce4-whiskermenu-plugin",
 		] ++ (
 			if release == :xenial, do: ["alsa-base"], else: []
+		) ++ (
+			# roxterm is discontinued and not in stretch
+			if release == :xenial, do: ["roxterm"], else: ["gnome-terminal"]
 		)
 		general_font_packages = [
 			"fonts-windows",
