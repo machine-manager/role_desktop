@@ -5,7 +5,7 @@ defmodule RoleDesktop do
 	import Util, only: [conf_dir: 1, conf_file: 1]
 	Util.declare_external_resources("files")
 
-	def role(_tags \\ []) do
+	def role(tags \\ []) do
 		release = Util.tag_value!(tags, "release") |> String.to_atom()
 		# We list specific xfce4 packages here instead of "xfce4", which would
 		# install some packages we don't want:
