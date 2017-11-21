@@ -24,7 +24,6 @@ defmodule RoleDesktop do
 		# it doesn't really work).
 		base_desktop_packages = [
 			"xorg",
-			"alsa-base",
 			"alsa-utils",              # alsamixer, amixer
 			"gnome-themes-standard",   # includes the adwaita engine
 			"gtk2-engines-pixbuf",     # necessary for the adwaita theme to render correctly
@@ -44,7 +43,9 @@ defmodule RoleDesktop do
 			"xfce4-session",
 			"xfce4-settings",
 			"xfce4-whiskermenu-plugin",
-		]
+		] ++ (
+			if release == :xenial, do: ["alsa-base"], else: []
+		)
 		general_font_packages = [
 			"fonts-windows",
 			"fonts-macos",
