@@ -6,6 +6,7 @@ defmodule RoleDesktop do
 	Util.declare_external_resources("files")
 
 	def role(_tags \\ []) do
+		release = Util.tag_value!(tags, "release") |> String.to_atom()
 		# We list specific xfce4 packages here instead of "xfce4", which would
 		# install some packages we don't want:
 		# orage                   - we use a spreadsheet for a calendar
@@ -27,7 +28,7 @@ defmodule RoleDesktop do
 			"alsa-utils",              # alsamixer, amixer
 			"gnome-themes-standard",   # includes the adwaita engine
 			"gtk2-engines-pixbuf",     # necessary for the adwaita theme to render correctly
-			"adwaita-icon-theme-full", # the icon theme we use
+			icon_theme_package(release),
 			"dmz-cursor-theme",        # the cursor theme we use
 			"roxterm",
 			"xterm",                   # backup terminal in case roxterm breaks
@@ -143,4 +144,7 @@ defmodule RoleDesktop do
 				""",
 		}
 	end
+
+	defp icon_theme_package(:xenial), do: "adwaita-icon-theme-full"
+	defp icon_theme_package(_),       do: "adwaita-icon-theme"
 end
