@@ -58,7 +58,6 @@ defmodule RoleDesktop do
 		development_packages = [
 			"git",
 			"git-man",
-			"git-remote-hg",
 			"git-svn",
 			"patch",
 			"manpages",
@@ -69,7 +68,10 @@ defmodule RoleDesktop do
 			"zip",
 			"p7zip-full",
 			"p7zip-rar",
-		]
+		] ++ (
+			# stretch is missing git-remote-hg
+			if release == :stretch, do: [], else: ["git-remote-hg"]
+		)
 		more_packages = [
 			"google-chrome-stable",
 			# For running AppImages, which apparently require FUSE
