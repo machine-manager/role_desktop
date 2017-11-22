@@ -29,6 +29,13 @@ defmodule RoleDesktop do
 			"gtk2-engines-pixbuf",     # necessary for the adwaita theme to render correctly
 			icon_theme_package(release),
 			"dmz-cursor-theme",        # the cursor theme we use
+			"dolphin",                 # nautilus is bad: sometimes stops generating thumbnails in big folders, thumbnails have way too much padding
+			"kio-extras",              # for dolphin to show thumbnails
+			"kio-mtp",                 # for dolphin to access to mobile devices
+			"systemsettings",          # for configuring KDE to show icons in dolphin: comment #28 https://bugs.launchpad.net/ubuntu/+source/dolphin/+bug/1509562
+			"elementary-icon-theme",   # icons that will actually show up in dolphin
+			"libqt5libqgtk2",          # for Qt5 apps to look like GTK apps
+			"kde-config-gtk-style",    # for Qt5 apps to look like GTK apps
 			"xterm",                   # backup terminal emulator in case the primary one breaks
 			"xclip",                   # for manipulating clipboard over ssh
 			"xfwm4",
@@ -64,6 +71,7 @@ defmodule RoleDesktop do
 			"git-svn",
 			"patch",
 			"manpages",
+			"info",       # for reading documentation for GNU utilities
 			"colordiff",
 			"devscripts",
 			"wdiff",
