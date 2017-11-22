@@ -27,14 +27,11 @@ defmodule RoleDesktop do
 			"alsa-utils",              # alsamixer, amixer
 			"gnome-themes-standard",   # includes the adwaita engine
 			"gtk2-engines-pixbuf",     # necessary for the adwaita theme to render correctly
-			icon_theme_package(release),
 			"dmz-cursor-theme",        # the cursor theme we use
 			"dolphin",                 # nautilus is bad: sometimes stops generating thumbnails in big folders, thumbnails have way too much padding
 			"kio-extras",              # for dolphin to show thumbnails
 			"kio-mtp",                 # for dolphin to access to mobile devices
 			"systemsettings",          # for configuring KDE to show icons in dolphin: comment #28 https://bugs.launchpad.net/ubuntu/+source/dolphin/+bug/1509562
-			"elementary-icon-theme",   # icons that will actually show up in dolphin
-			"libqt5libqgtk2",          # for Qt5 apps to look like GTK apps
 			"kde-config-gtk-style",    # for Qt5 apps to look like GTK apps
 			"xterm",                   # backup terminal emulator in case the primary one breaks
 			"xclip",                   # for manipulating clipboard over ssh
@@ -50,10 +47,21 @@ defmodule RoleDesktop do
 			"xfce4-settings",
 			"xfce4-whiskermenu-plugin",
 		] ++ (
-			if release == :xenial, do: ["alsa-base"], else: []
-		) ++ (
-			# roxterm is discontinued and not in stretch
-			if release == :xenial, do: ["roxterm"], else: ["gnome-terminal"]
+			if release == :xenial do
+				[
+					"adwaita-icon-theme-full",
+					"elementary-icon-theme", # icons that will actually show up in dolphin
+					"alsa-base",
+					"roxterm",
+					"libqt5libqgtk2",        # for Qt5 apps to look like GTK apps
+				]
+			else
+				[
+					"adwaita-icon-theme",
+					"gnome-terminal",        # roxterm is discontinued and not in stretch
+					"qt5-gtk-platformtheme", # for Qt5 apps to look like GTK apps
+				]
+			end
 		)
 		general_font_packages = [
 			"fonts-windows",
@@ -157,7 +165,4 @@ defmodule RoleDesktop do
 				""",
 		}
 	end
-
-	defp icon_theme_package(:xenial), do: "adwaita-icon-theme-full"
-	defp icon_theme_package(_),       do: "adwaita-icon-theme"
 end
