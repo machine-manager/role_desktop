@@ -58,6 +58,7 @@ defmodule RoleDesktop do
 			else
 				[
 					"adwaita-icon-theme",
+					"nuvola-icon-theme",     # icons that will actually show up in dolphin
 					"gnome-terminal",        # roxterm is discontinued and not in stretch
 					"qt5-gtk-platformtheme", # for Qt5 apps to look like GTK apps
 				]
