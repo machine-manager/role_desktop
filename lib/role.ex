@@ -49,17 +49,17 @@ defmodule RoleDesktop do
 		] ++ (
 			if release == :xenial do
 				[
+					"roxterm",
 					"adwaita-icon-theme-full",
 					"elementary-icon-theme", # icons that will actually show up in dolphin
 					"alsa-base",
-					"roxterm",
 					"libqt5libqgtk2",        # for Qt5 apps to look like GTK apps
 				]
 			else
 				[
+					"gnome-terminal",        # roxterm is discontinued and not in stretch
 					"adwaita-icon-theme",
 					"nuvola-icon-theme",     # icons that will actually show up in dolphin
-					"gnome-terminal",        # roxterm is discontinued and not in stretch
 					"qt5-gtk-platformtheme", # for Qt5 apps to look like GTK apps
 				]
 			end
