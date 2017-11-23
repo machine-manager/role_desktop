@@ -28,7 +28,12 @@ defmodule RoleDesktop do
 			"gnome-themes-standard",   # includes the adwaita engine
 			"gtk2-engines-pixbuf",     # necessary for the adwaita theme to render correctly
 			"dmz-cursor-theme",        # the cursor theme we use
-			"dolphin",                 # nautilus is bad: sometimes stops generating thumbnails in big folders, thumbnails have way too much padding
+			# Use dolphin because nautilus is bad: it sometimes stops generating thumbnails
+			# in big folders; thumbnails have way too much padding.
+			#
+			# Note: for dolphin to show thumbnails for images, check
+			# View -> Adjust View Properties... -> [x] Show preview
+			"dolphin",
 			"kio-extras",              # for dolphin to show thumbnails
 			"kio-mtp",                 # for dolphin to access to mobile devices
 			"systemsettings",          # for configuring KDE to show icons in dolphin: comment #28 https://bugs.launchpad.net/ubuntu/+source/dolphin/+bug/1509562
