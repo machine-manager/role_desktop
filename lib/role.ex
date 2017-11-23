@@ -57,7 +57,9 @@ defmodule RoleDesktop do
 				]
 			else
 				[
-					"gnome-terminal",        # roxterm is discontinued and not in stretch
+					# roxterm is discontinued and not in stretch; gnome-terminal is slower
+					# than konsole and can't open tabs to the right of the current tab
+					"konsole",
 					"adwaita-icon-theme",
 					"nuvola-icon-theme",     # icons that will actually show up in dolphin
 					"qt5-gtk-platformtheme", # for Qt5 apps to look like GTK apps
