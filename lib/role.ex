@@ -24,6 +24,7 @@ defmodule RoleDesktop do
 		# it doesn't really work).
 		base_desktop_packages = [
 			"xorg",
+			"xinput",                  # for tweaking mouse acceleration
 			"alsa-utils",              # alsamixer, amixer
 			"gnome-themes-standard",   # includes the adwaita engine
 			"gtk2-engines-pixbuf",     # necessary for the adwaita theme to render correctly
