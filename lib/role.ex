@@ -39,6 +39,11 @@ defmodule RoleDesktop do
 			"kio-mtp",                 # for dolphin to access to mobile devices
 			"systemsettings",          # for configuring KDE to show icons in dolphin: comment #28 https://bugs.launchpad.net/ubuntu/+source/dolphin/+bug/1509562
 			"kde-config-gtk-style",    # for Qt5 apps to look like GTK apps
+			# Fix this warning:
+			# ** (konsole:5943): WARNING **: Error retrieving accessibility bus
+			# address: org.freedesktop.DBus.Error.ServiceUnknown: The name
+			# org.a11y.Bus was not provided by any .service files
+			"at-spi2-core",
 			"xterm",                   # backup terminal emulator in case the primary one breaks
 			"xclip",                   # for manipulating clipboard over ssh
 			"xfwm4",
