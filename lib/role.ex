@@ -140,6 +140,8 @@ defmodule RoleDesktop do
 			# xserver-xorg has a Depends on `xserver-xorg-input-all | xorg-driver-input`
 			# but we don't need support for all input devices.
 			"xserver-xorg-input-all",
+			# The same for video
+			"xserver-xorg-video-all",
 		]
 		post_install_unit = %All{units: [
 			conf_file("/etc/skel/.xinitrc"),
