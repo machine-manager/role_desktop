@@ -143,7 +143,7 @@ defmodule RoleDesktop do
 			"xserver-xorg-input-all",
 			# Worse than synaptics for touchpads; use evdev for regular mice
 			"xserver-xorg-input-libinput",
-			# The same for video
+			# We don't need all video drivers
 			"xserver-xorg-video-all",
 		]
 		post_install_unit = %All{units: [
