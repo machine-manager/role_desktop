@@ -24,6 +24,7 @@ defmodule RoleDesktop do
 		# it doesn't really work).
 		base_desktop_packages = [
 			"xorg",
+			"xserver-xorg-input-evdev", # for regular mice
 			"xinput",                  # for tweaking mouse acceleration
 			"alsa-utils",              # alsamixer, amixer
 			"gnome-themes-standard",   # includes the adwaita engine
@@ -140,6 +141,8 @@ defmodule RoleDesktop do
 			# xserver-xorg has a Depends on `xserver-xorg-input-all | xorg-driver-input`
 			# but we don't need support for all input devices.
 			"xserver-xorg-input-all",
+			# Worse than synaptics for touchpads; use evdev for regular mice
+			"xserver-xorg-input-libinput",
 			# The same for video
 			"xserver-xorg-video-all",
 		]
