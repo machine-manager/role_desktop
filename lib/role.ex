@@ -25,28 +25,28 @@ defmodule RoleDesktop do
 		base_desktop_packages = [
 			"xorg",
 			"xserver-xorg-input-evdev", # for regular mice
-			"xinput",                  # for tweaking mouse acceleration
-			"alsa-utils",              # alsamixer, amixer
-			"gnome-themes-standard",   # includes the adwaita engine
-			"gtk2-engines-pixbuf",     # necessary for the adwaita theme to render correctly
-			"dmz-cursor-theme",        # the cursor theme we use
+			"xinput",                   # for tweaking mouse acceleration
+			"alsa-utils",               # alsamixer, amixer
+			"gnome-themes-standard",    # includes the adwaita engine
+			"gtk2-engines-pixbuf",      # necessary for the adwaita theme to render correctly
+			"dmz-cursor-theme",         # the cursor theme we use
 			# Use dolphin because nautilus is bad: it sometimes stops generating thumbnails
 			# in big folders; thumbnails have way too much padding.
 			#
 			# Note: for dolphin to show thumbnails for images, check
 			# View -> Adjust View Properties... -> [x] Show preview
 			"dolphin",
-			"kio-extras",              # for dolphin to show thumbnails
-			"kio-mtp",                 # for dolphin to access to mobile devices
-			"systemsettings",          # for configuring KDE to show icons in dolphin: comment #28 https://bugs.launchpad.net/ubuntu/+source/dolphin/+bug/1509562
-			"kde-config-gtk-style",    # for Qt5 apps to look like GTK apps
+			"kio-extras",               # for dolphin to show thumbnails
+			"kio-mtp",                  # for dolphin to access to mobile devices
+			"systemsettings",           # for configuring KDE to show icons in dolphin: comment #28 https://bugs.launchpad.net/ubuntu/+source/dolphin/+bug/1509562
+			"kde-config-gtk-style",     # for Qt5 apps to look like GTK apps
 			# Fix this warning:
 			# ** (konsole:5943): WARNING **: Error retrieving accessibility bus
 			# address: org.freedesktop.DBus.Error.ServiceUnknown: The name
 			# org.a11y.Bus was not provided by any .service files
 			"at-spi2-core",
-			"xterm",                   # backup terminal emulator in case the primary one breaks
-			"xclip",                   # for manipulating clipboard over ssh
+			"xterm",                    # backup terminal emulator in case the primary one breaks
+			"xclip",                    # for manipulating clipboard over ssh
 			"xfwm4",
 			"xfconf",
 			"xfdesktop4",
