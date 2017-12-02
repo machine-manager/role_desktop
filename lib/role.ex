@@ -75,19 +75,6 @@ defmodule RoleDesktop do
 					"adwaita-icon-theme",
 					"nuvola-icon-theme",     # icons that will actually show up in dolphin
 					"qt5-gtk-platformtheme", # for Qt5 apps to look like GTK apps
-
-					# For evaluating whether to use KDE instead of xfce4
-					"plasma-desktop",
-					"kde-style-breeze-qt4",
-					"kde-style-qtcurve",
-					"fonts-oxygen",
-					"gtk3-engines-breeze",
-					"kde-style-oxygen-qt5",
-					"khelpcenter",
-					"kinfocenter",
-					"khotkeys",
-					"kde-style-qtcurve-qt5",
-					"kwin-x11",
 				]
 			end
 		)
