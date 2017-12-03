@@ -93,8 +93,6 @@ defmodule RoleDesktop do
 			"git-man",
 			"git-svn",
 			"patch",
-			"manpages",
-			"info",       # for reading documentation for GNU utilities
 			"colordiff",
 			"devscripts",
 			"wdiff",
