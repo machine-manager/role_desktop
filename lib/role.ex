@@ -85,6 +85,7 @@ defmodule RoleDesktop do
 			"fonts-pragmatapro-mono",
 			"fonts-noto-hinted",
 			"fonts-noto-cjk",
+			"fonts-noto-cjk-extra",
 			"fonts-san-francisco",
 			"fonts-source-sans-pro",
 		]
