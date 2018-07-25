@@ -5,8 +5,7 @@ defmodule RoleDesktop do
 	import Util, only: [conf_dir: 1, conf_file: 1]
 	Util.declare_external_resources("files")
 
-	def role(tags \\ []) do
-		release = Util.tag_value!(tags, "release") |> String.to_atom()
+	def role(_tags \\ []) do
 		# We list specific xfce4 packages here instead of "xfce4", which would
 		# install some packages we don't want:
 		# orage                   - we use a spreadsheet for a calendar
@@ -58,26 +57,13 @@ defmodule RoleDesktop do
 			"xfce4-session",
 			"xfce4-settings",
 			"xfce4-whiskermenu-plugin",
-		] ++ (
-			if release == :xenial do
-				[
-					"roxterm",
-					"adwaita-icon-theme-full",
-					"elementary-icon-theme", # icons that will actually show up in dolphin
-					"alsa-base",
-					"libqt5libqgtk2",        # for Qt5 apps to look like GTK apps
-				]
-			else
-				[
-					# roxterm is discontinued and not in stretch; gnome-terminal is slower
-					# than konsole and can't open tabs to the right of the current tab
-					"konsole",
-					"adwaita-icon-theme",
-					"nuvola-icon-theme",     # icons that will actually show up in dolphin
-					"qt5-gtk-platformtheme", # for Qt5 apps to look like GTK apps
-				]
-			end
-		)
+			# roxterm is discontinued and not in stretch; gnome-terminal is slower
+			# than konsole and can't open tabs to the right of the current tab
+			"konsole",
+			"adwaita-icon-theme",
+			"nuvola-icon-theme",     # icons that will actually show up in dolphin
+			"qt5-gtk-platformtheme", # for Qt5 apps to look like GTK apps
+		]
 		general_font_packages = [
 			"fonts-windows",
 			"fonts-macos",
@@ -101,10 +87,7 @@ defmodule RoleDesktop do
 			"zip",
 			"p7zip-full",
 			"p7zip-rar",
-		] ++ (
-			# stretch is missing git-remote-hg
-			if release == :stretch, do: [], else: ["git-remote-hg"]
-		)
+		]
 		desired_packages = \
 			base_desktop_packages ++ general_font_packages ++ development_packages
 		undesired_packages = [
