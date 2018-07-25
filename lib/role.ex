@@ -105,13 +105,8 @@ defmodule RoleDesktop do
 			# stretch is missing git-remote-hg
 			if release == :stretch, do: [], else: ["git-remote-hg"]
 		)
-		more_packages = [
-			"google-chrome-stable",
-			# For running AppImages, which apparently require FUSE
-			"fuse",
-		]
 		desired_packages = \
-			base_desktop_packages ++ general_font_packages ++ development_packages ++ more_packages
+			base_desktop_packages ++ general_font_packages ++ development_packages
 		undesired_packages = [
 			# We use our own fonts-windows instead
 			"ttf-mscorefonts-installer",
@@ -162,7 +157,7 @@ defmodule RoleDesktop do
 			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Profiles/Default"),
 		]}
 		%{
-			implied_roles:      [RoleGoogleChromeRepo, RoleCustomPackages],
+			implied_roles:      [RoleCustomPackages],
 			desired_packages:   desired_packages,
 			undesired_packages: undesired_packages,
 			post_install_unit:  post_install_unit,
@@ -170,16 +165,6 @@ defmodule RoleDesktop do
 				"""
 				# Avahi (?) tries to talk mDNS on all interfaces; we don't want to log it
 				daddr 224.0.0.251 REJECT;
-
-				# Chrome tries to talk UPnP on all interfaces (probably for Chromecast); we don't want to log it
-				daddr 239.255.255.250 proto udp dport 1900 REJECT;
-
-				outerface lo {
-					# Chrome Developer Tools, when opened, repeatedly tries to
-					# connect to this; we don't want to log it.  Implemented in
-					# chrome/browser/devtools/device/devtools_android_bridge.cc
-					daddr 127.0.0.1 proto tcp syn dport 9229 REJECT;
-				}
 				""",
 		}
 	end
