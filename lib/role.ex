@@ -83,7 +83,6 @@ defmodule RoleDesktop do
 			"colordiff",
 			"devscripts",
 			"wdiff",
-			"unzip",
 			"zip",
 			"p7zip-full",
 			"p7zip-rar",
