@@ -16,7 +16,6 @@ defmodule RoleDesktop.Mixfile do
 		[
 			{:converge,                ">= 0.1.0"},
 			{:role_google_chrome_repo, ">= 0.1.0"},
-			{:role_custom_packages,    ">= 0.1.0"},
 		]
 	end
 end

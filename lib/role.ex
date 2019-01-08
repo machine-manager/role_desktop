@@ -65,15 +65,10 @@ defmodule RoleDesktop do
 			"qt5-gtk-platformtheme", # for Qt5 apps to look like GTK apps
 		]
 		general_font_packages = [
-			"fonts-windows",
-			"fonts-macos",
 			"fonts-roboto",
-			"fonts-pragmatapro-mono",
 			"fonts-noto-hinted",
 			"fonts-noto-cjk",
 			"fonts-noto-cjk-extra",
-			"fonts-san-francisco",
-			"fonts-source-sans-pro",
 		]
 		development_packages = [
 			"git",
@@ -90,8 +85,6 @@ defmodule RoleDesktop do
 		desired_packages = \
 			base_desktop_packages ++ general_font_packages ++ development_packages
 		undesired_packages = [
-			# We use our own fonts-windows instead
-			"ttf-mscorefonts-installer",
 			# We use ALSA instead
 			"pulseaudio",
 			# We just allow desktop users to nice down to -11
@@ -139,7 +132,6 @@ defmodule RoleDesktop do
 			conf_file("/etc/skel/.config/roxterm.sourceforge.net/Profiles/Default"),
 		]}
 		%{
-			implied_roles:      [RoleCustomPackages],
 			desired_packages:   desired_packages,
 			undesired_packages: undesired_packages,
 			post_install_unit:  post_install_unit,
